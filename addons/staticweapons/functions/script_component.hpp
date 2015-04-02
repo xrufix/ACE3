@@ -1,0 +1,1 @@
+#include "\z\ace\addons\staticweapons\script_component.hpp"
