@@ -18,7 +18,7 @@
 
 PARAMS_2(_target,_player);
 
-systemChat format ["canAss - %1", time];
+// systemChat format ["canAss - %1", time];
 
 if (!([_player, _target, []] call EFUNC(common,canInteractWith))) exitWith {false};
 

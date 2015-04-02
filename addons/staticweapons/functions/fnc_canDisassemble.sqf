@@ -20,6 +20,7 @@ PARAMS_2(_target,_player);
 
 if (!([_player, _target, []] call EFUNC(common,canInteractWith))) exitWith {false};
 
+// systemChat format ["canDis - %1", time];
 
 _cfgPath =  configfile >> "CfgVehicles" >> (typeOf _target) >> "assembleInfo" >> "dissasembleTo";
 
