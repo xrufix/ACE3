@@ -4,7 +4,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 class GVAR(DisAssemble) {
-                    displayName = "DisASSemble";
+                    displayName = "Disassemble";
                     distance = 3;
                     condition = QUOTE(_this call FUNC(canDisassemble));
                     statement = QUOTE(_this call FUNC(doDisassemble));
