@@ -1,5 +1,5 @@
 #define COMPONENT fonts
-#include "z\ace\addons\main\script_mod.hpp"
+#include "\z\ace\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_FONTS
     #define DEBUG_MODE_FULL
