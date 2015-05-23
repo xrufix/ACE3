@@ -44,6 +44,7 @@ _projectilePos = getPosASL _projectile;
 // @TODO: placeholder for "last seek target position"
 // Last target pos should be optional based on the seeker unit
 _seekerTargetPos = [ [0,0,0], _args, (_stateParams select 1)] call FUNC(doSeekerSearch);
+TRACE_1("Seeker", _seekerTargetPos);
 if(isNil "_seekerTargetPos") then {
     _seekerTargetPos = _seekerTargetPos vectorAdd ((velocity _projectile) vectorMultiply 5);
 } else {
@@ -55,6 +56,7 @@ if(isNil "_seekerTargetPos") then {
 _profileAdjustedTargetPos = [_seekerTargetPos,_args, (_stateParams select 2)] call FUNC(doAttackProfile);
 _targetVector = _projectilePos vectorFromTo _profileAdjustedTargetPos;
 _adjustVector = _targetVector vectorDiff (vectorDir _projectile);
+TRACE_1("Profile", _profileAdjustedTargetPos);
 
 _yaw = 0;
 _pitch = 0;

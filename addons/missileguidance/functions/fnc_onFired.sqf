@@ -1,4 +1,4 @@
-//#define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 // Bail if guidance is disabled
@@ -13,7 +13,7 @@ private["_args", "_canUseLock", "_guidingUnit", "_launchPos", "_lockMode", "_tar
 PARAMS_7(_shooter,_weapon,_muzzle,_mode,_ammo,_magazine,_projectile);
 
 // Bail on not missile
-if(! (_ammo isKindOf "MissileBase") ) exitWith { false }; 
+if(! (_ammo isKindOf "MissileBase") && !(_ammo isKindOf "LaserBombCore") ) exitWith { false }; 
 
 //Verify ammo has explicity added guidance config (ignore inheritances)
 _configs = configProperties [(configFile >> "CfgAmmo" >> _ammo), QUOTE(configName _x == QUOTE(QUOTE(ADDON))), false];
@@ -37,8 +37,6 @@ _laserInfo = [_laserCode, ACE_DEFAULT_LASER_WAVELENGTH, ACE_DEFAULT_LASER_WAVELE
 
 _launchPos = getPosASL (vehicle _shooter);
 
-TRACE_3("Begin guidance", _target, _seekerType, _attackProfile);
-
 if ( isNil "_seekerType" || { ! ( _seekerType in (getArray (_config >> "seekerTypes" ) ) ) } ) then { 
     _seekerType = getText (_config >> "defaultSeekerType");
 }; 
@@ -49,6 +47,8 @@ if ( isNil "_lockMode" || { ! ( _lockMode in (getArray (_config >> "seekerLockMo
     _lockMode = getText (_config >> "defaultSeekerLockMode"); 
 };
 
+TRACE_3("Begin guidance", _target, _seekerType, _attackProfile);
+
 // If we didn't get a target, try to fall back on tab locking
 if(isNil "_target") then {
     if(!isPlayer _shooter) then {
@@ -58,7 +58,8 @@ if(isNil "_target") then {
     } else {
         _canUseLock = getNumber (_config >> "canVanillaLock");
         // @TODO: Get vanilla target
-        if(_canUseLock > 0 || difficulty < 1) then {
+        // @TODO: disabled
+        if(_canUseLock > 0 || difficulty < 1 && false) then {
             _vanillaTarget = cursorTarget;
             
             TRACE_1("Using Vanilla Locking", _vanillaTarget);

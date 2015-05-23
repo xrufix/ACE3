@@ -5,6 +5,46 @@ enum {
 
 class CfgAmmo {
     class MissileBase;
+    class LaserBombCore;
+    
+    class Bo_GBU12_LGB : LaserBombCore {
+        irLock = 0;
+        laserLock = 0;
+        airLock = 0;
+        weaponLockSystem = "2 + 16";
+        manualControl = 0;
+        
+        // ACE uses these values
+        trackOversteer = 1;
+        trackLead = 0;
+        
+         class ADDON {
+            enabled = 1;
+            
+            minDeflection = 0.0025;      // Minium flap deflection for guidance
+            maxDeflection = 0.0025;       // Maximum flap deflection for guidance
+            incDeflection = 0.0025;      // The incrmeent in which deflection adjusts.
+            
+            canVanillaLock = 0;          // Can this default vanilla lock? Only applicable to non-cadet mode
+            
+            // Guidance type for munitions
+            defaultSeekerType = "SALH";
+            seekerTypes[] = { "SALH" };  
+           
+            defaultSeekerLockMode = "LOAL";
+            seekerLockModes[] = { "LOAL", "LOBL" }; 
+            
+            seekerAngle = 90;           // Angle in front of the missile which can be searched
+            seekerAccuracy = 1;         // seeker accuracy multiplier
+            
+            seekerMinRange = 1;
+            seekerMaxRange = 7000;      // Range from the missile which the seeker can visually search
+            
+            // Attack profile type selection
+            defaultAttackProfile = "GBU";
+            attackProfiles[] = { "GBU" };
+        };
+    };
     
     class M_PG_AT : MissileBase {
         model = "\A3\Weapons_F\Ammo\Rocket_01_fly_F";

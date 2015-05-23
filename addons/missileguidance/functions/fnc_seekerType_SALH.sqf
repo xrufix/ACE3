@@ -7,6 +7,7 @@ _seekerTargetPos = _this select 0;
 _launchParams = _this select 1;
 _seekerParams = _launchParams select 3;
 _angleFov = _seekerParams select 0;
+_canSeeTarget = true;
 
 _laserParams = (_launchParams select 1) select 5;
 TRACE_2("", _launchParams, _laserParams);

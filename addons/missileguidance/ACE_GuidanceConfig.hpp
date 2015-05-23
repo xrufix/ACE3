@@ -41,6 +41,13 @@ class GVAR(AttackProfiles) {
         
         functionName = QFUNC(attackProfile_JAV_TOP);
     };
+    class GBU {
+        name = "";
+        visualName = "";
+        description = "";
+        
+        functionName = QFUNC(attackProfile_GBU);
+    };
 };
 
 class GVAR(SeekerTypes) {

@@ -24,6 +24,9 @@ PREP(attackProfile_MID);
 PREP(attackProfile_HI);
 PREP(attackProfile_AIR);
 
+// LGBs and GBUs
+PREP(attackProfile_GBU);
+
 // Javelin profiles
 PREP(attackProfile_JAV_DIR);
 PREP(attackProfile_JAV_TOP);
