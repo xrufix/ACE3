@@ -887,13 +887,11 @@ class CfgVehicles {
         };
     };
 
-    class NATO_Box_Base;
-    class ACE_medicalSupplyCrate: NATO_Box_Base {
-        scope = 2;
-        accuracy = 1000;
+    class ACE_Crate_Medium_Empty;
+    class ACE_medicalSupplyCrate: ACE_Crate_Medium_Empty {
         displayName = CSTRING(medicalSupplyCrate);
-        model = PATHTOF(data\ace_medcrate.p3d);
-        author = ECSTRING(common,ACETeam);
+		hiddenselection[] = {"Logo1""Logo5","Logo7","Logo10","Logo11","Text1","Text2","Text3","Text4"};
+		hiddenSelectionsTextures[] = {QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa))};
         class TransportItems {
             MACRO_ADDITEM(ACE_fieldDressing,50);
             MACRO_ADDITEM(ACE_morphine,25);
