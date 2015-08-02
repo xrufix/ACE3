@@ -2,6 +2,6 @@
 
 ADDON = false;
 
-PREP(empty);
+PREP(moduleCrate);
 
 ADDON = true;
