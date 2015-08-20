@@ -14,7 +14,7 @@
  * Public: No
  */
 #include "script_component.hpp"
-
+scopeName "main";
 if (GVAR(ProgressIsRunning)) exitWith {};
 
 private ["_haveIllegalPrimaryWeapon", "_haveIllegalSecondaryWeapon", "_haveIllegalBackpack", "_vehicle", "_"];

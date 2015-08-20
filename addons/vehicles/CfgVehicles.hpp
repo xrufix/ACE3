@@ -331,4 +331,11 @@ class CfgVehicles {
             };
         };
     };
+
+    class Bag_Base {
+        GVAR(Class) = "BagPack";
+    };
+    class B_Parachute:Bag_Base {
+        GVAR(Class) = "Parachute";
+    };
 };

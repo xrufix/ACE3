@@ -5,6 +5,6 @@ ADDON = false;
 PREP(speedLimiter);
 PREP(startEngine);
 PREP(dropGear);
-PREP(playerChangePosition);
+PREP(playerChangePositionInVehicle);
 
 ADDON = true;
