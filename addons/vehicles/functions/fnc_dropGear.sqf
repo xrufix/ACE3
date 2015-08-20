@@ -16,9 +16,13 @@
  */
 #include "script_component.hpp"
 
+if (GVAR(ProgressIsRunning)) exitWith {};
+
 private ["_fnc_dropCondition", "_fnc_dropFail", "_fnc_dropFinish"];
+
 _fnc_dropCondition = {
     params ["_unit"];
+    GVAR(ProgressIsRunning) = true;
     _unit != vehicle _unit
 };
 _fnc_dropFail = {
@@ -42,4 +46,5 @@ _fnc_dropFinish = {
 };
 
 GVAR(ProgressIsRunning) = true;
+
 [10, _this, _fnc_dropFinish, _fnc_dropFail, "GetInVehicle", _fnc_dropCondition] call ace_common_fnc_progressBar

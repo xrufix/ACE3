@@ -17,13 +17,13 @@
 
 if (GVAR(ProgressIsRunning)) exitWith {};
 
-private ["_haveIllegalPrimaryWeapon", "_haveIllegalSecundaryWeapon", "_haveIllegalBackpack", "_vehicle", "_"];
+private ["_haveIllegalPrimaryWeapon", "_haveIllegalSecondaryWeapon", "_haveIllegalBackpack", "_vehicle", "_"];
 
 params ["_kindOf", "_args"];
 _args params ["_unit", "_index"];
 
 _haveIllegalPrimaryWeapon = false;
-_haveIllegalSecundaryWeapon = false;
+_haveIllegalSecondaryWeapon = false;
 _haveIllegalBackpack = false;
 
 _vehicle = vehicle _unit;
@@ -34,8 +34,8 @@ _secondaryWeapon = secondaryWeapon _unit;
 _backpack = backpack _unit;
 
 _currentPrimaryWeaponType = getText(configFile >> "CfgWeapons" >> typeOf _primaryWeapon >> QGVAR(Class));
-_currentSecundaryWeaponType = getText(configFile >> "CfgWeapons" >> typeOf _secondaryWeapon >> QGVAR(Class));
-_currentBackpackType = getText(configFile >> "CfgVehicles" >> typeOf );
+_currentSecondaryWeaponType = getText(configFile >> "CfgWeapons" >> typeOf _secondaryWeapon >> QGVAR(Class));
+_currentBackpackType = getText(configFile >> "CfgVehicles" >> typeOf _backpack >> QGVAR(Class));
 
 _allowedGear = switch _unit do {
     case driver _vehicle: {
@@ -43,7 +43,7 @@ _allowedGear = switch _unit do {
     };
     case gunner _vehicle; case commander _vehicle: {
         if (typeName _index == "OBJECT") then {
-            _index = [_unit] call EFUNC(getTurretIndex);
+            _index = [_unit] call EFUNC(common,getTurretIndex);
         };
         _config = [(configFile >> "CfgVehicles" >> typeOf _vehicle), _index] call EFUNC(common,getTurretConfigPath);
         getArray(_config >> QGVAR(AllowedClasses))
@@ -59,8 +59,8 @@ _haveIllegalPrimaryWeapon = if (_currentPrimaryWeaponType != "") then {
     false
 };
 
-_haveIllegalSecundaryWeapon = if (_currentSecundaryWeaponType != "") then {
-    !(_currentSecundaryWeaponType in _allowedGear)
+_haveIllegalSecondaryWeapon = if (_currentSecondaryWeaponType != "") then {
+    !(_currentSecondaryWeaponType in _allowedGear)
 } else {
     false
 };
@@ -72,14 +72,14 @@ _haveIllegalBackpack = if (_currentBackpackType != "") then {
 };
 
 
-if !(_haveIllegalPrimaryWeapon || _haveIllegalSecundaryWeapon || _haveIllegalBackpack) exitWith {};
+if !(_haveIllegalPrimaryWeapon || _haveIllegalSecondaryWeapon || _haveIllegalBackpack) exitWith {};
 
 _param = [];
 if (_haveIllegalPrimaryWeapon) then {
     _param pushBack [_unit, _primaryWeapon, 0];
 };
 
-if (_haveIllegalSecundaryWeapon) then {
+if (_haveIllegalSecondaryWeapon) then {
     _param pushBack [_unit, _secondaryWeapon, 0];
 };
 

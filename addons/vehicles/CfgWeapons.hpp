@@ -64,10 +64,6 @@ class CfgWeapons {
     };
 
 
-
-
-
-
     class LMG_RCWS;
     class MGun;
     class MGunCore;
@@ -130,7 +126,9 @@ class CfgWeapons {
     class LMG_Mk200_F: Rifle_Long_Base_F {
         GVAR(Class) = "MG";
     };
-    class LMG_Zafir_F: Rifle_Long_Base_F {};
+    class LMG_Zafir_F: Rifle_Long_Base_F {
+        GVAR(Class) = "MG";
+    };
 
 
     /* Assault Rifles */

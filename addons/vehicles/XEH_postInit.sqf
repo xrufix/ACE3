@@ -32,7 +32,7 @@ if !(hasInterface) exitWith {};
 
 [QGVAR(dropWeapon), {
     params ["_unit", "_weapon"];
-    _unit action ["DropWeapon", _item]
+    _unit action ["DropWeapon", _item];
 }] call EFUNC(common,addEventhandler);
 
 GVAR(ProgressIsRunning) = false;
