@@ -4,5 +4,7 @@ ADDON = false;
 
 PREP(speedLimiter);
 PREP(startEngine);
+PREP(dropGear);
+PREP(playerChangePosition);
 
 ADDON = true;

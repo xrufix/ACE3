@@ -19,3 +19,20 @@ if !(hasInterface) exitWith {};
 },
 {false},
 [211, [false, false, false]], false] call cba_fnc_addKeybind; //DELETE Key
+
+
+["playerVehicleChanged", {[0, _this] call FUNC(playerChangePositionInVehicle)}] call EFUNC(common,addEventhandler);
+["playerTurretChanged", {[1, _this] call FUNC(playerChangePositionInVehicle)}] call EFUNC(common,addEventhandler);
+
+
+[QGVAR(dropBackpack), {
+    params ["_unit", "_item"];
+    _unit action ["DropBag", _item];
+}] call EFUNC(common,addEventhandler);
+
+[QGVAR(dropWeapon), {
+    params ["_unit", "_weapon"];
+    _unit action ["DropWeapon", _item]
+}] call EFUNC(common,addEventhandler);
+
+GVAR(ProgressIsRunning) = false;

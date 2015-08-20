@@ -62,4 +62,101 @@ class CfgWeapons {
 
         muzzles[] = {"AP"};
     };
+
+
+
+
+
+
+    class LMG_RCWS;
+    class MGun;
+    class MGunCore;
+    class MMG_01_base_F;
+    class MMG_02_base_F;
+    class Rifle_Base_F;
+    class Rifle_Long_Base_F;
+    class WeaponSlotsInfo;
+    class MuzzleSlot;
+
+    /* Long Rifles */
+
+    class GM6_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class LRR_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_06_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_05_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_04_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_03_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_02_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class DMR_01_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    class EBR_base_F: Rifle_Long_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    /* MX */
+    class arifle_MX_Base_F: Rifle_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    /* Katiba */
+    class arifle_katiba_Base_F: Rifle_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    /* Other */
+    class LMG_Mk200_F: Rifle_Long_Base_F {
+        GVAR(Class) = "MG";
+    };
+    class LMG_Zafir_F: Rifle_Long_Base_F {};
+
+
+    /* Assault Rifles */
+    class Tavor_base_F: Rifle_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+    class mk20_base_F: Rifle_Base_F {
+        GVAR(Class) = "Rifle";
+    };
+
+    /* SMGs */
+    class SDAR_base_F: Rifle_Base_F {
+        GVAR(Class) = "SMG";
+    };
+    class pdw2000_base_F: Rifle_Base_F {
+        GVAR(Class) = "SMG";
+    };
+    class SMG_01_Base: Rifle_Base_F {
+        GVAR(Class) = "SMG";
+    };
+    class SMG_02_base_F: Rifle_Base_F {
+        GVAR(Class) = "SMG";
+    };
+
+    class Pistol {
+        GVAR(Class) = "Pistol";
+    };
+
 };
