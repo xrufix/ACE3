@@ -45,6 +45,10 @@ _allowedGear = switch _unit do {
         if (typeName _index == "OBJECT") then {
             _index = [_unit] call EFUNC(common,getTurretIndex);
         };
+        
+        _FFVTurrets = allTurrets [_vehicle, true] - allTurrets [_vehicle, false];
+        if(_index in _FFVTurrets) exitWith {[]}; //FFV turret
+
         _config = [(configFile >> "CfgVehicles" >> typeOf _vehicle), _index] call EFUNC(common,getTurretConfigPath);
         getArray(_config >> QGVAR(AllowedClasses))
     };
