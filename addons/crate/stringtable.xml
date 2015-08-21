@@ -7,5 +7,13 @@
             <French>[ACE] Caisse moyenne vide</French>
             <Polish>[ACE] Pusta średnia skrzynka</Polish>
         </Key>
+        <Key ID="STR_ACE_crate_SmallCrate">
+            <English>[ACE] Empty small crate</English>
+            <German>[ACE] Leere kleine Kiste</German>
+        </Key>
+        <Key ID="STR_ACE_crate_LargeCrate">
+            <English>[ACE] Empty large crate</English>
+            <German>[ACE] Leere große Kiste</German>
+        </Key>
     </Package>
 </Project>
