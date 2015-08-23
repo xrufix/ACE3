@@ -254,7 +254,7 @@ class CfgVehicles {
         mapSize = 0.7;
         accuracy = 0.2;
         vehicleClass = "ACE_Logistics_Items";
-        destrType = "DestructWreck";
+        destrType = "DestructBuilding";
     };
 
     class ACE_Track: ACE_RepairItem_Base {
@@ -276,6 +276,7 @@ class CfgVehicles {
                 explosionShielding = 0;
             };
         };
+        selectionDamage= "main";
         class Damage {
             tex[]={PATHTOEF(apl,data\vehicle_destr1024_1024_mc.paa)};
             mat[] = {PATHTOF(data\trailObjects.rvmat)};
@@ -303,6 +304,7 @@ class CfgVehicles {
                 explosionShielding = 0;
             };
         };
+        selectionDamage= "main";
         class Damage {
             tex[] = {PATHTOEF(apl,data\vehicle_destr1024_1024_mc.paa)};
             mat[] = {PATHTOF(data\trailObjects.rvmat)};
