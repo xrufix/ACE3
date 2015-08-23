@@ -254,26 +254,59 @@ class CfgVehicles {
         mapSize = 0.7;
         accuracy = 0.2;
         vehicleClass = "ACE_Logistics_Items";
-        destrType = "DesturctNo";
+        destrType = "DestructWreck";
     };
 
     class ACE_Track: ACE_RepairItem_Base {
         EGVAR(cargo,size) = 2;
         EGVAR(cargo,canLoad) = 1;
-        author = "Hawkins";
+        author = ECSTRING(common,ACETeam);
         scope = 2;
         model = QUOTE(PATHTOF(data\ace_track.p3d));
         displayName = CSTRING(SpareTrack);
+        hiddenselection[] = {"main"};
+        class HitPoints {
+            class HitMain {
+                armor = 30;
+                material = -1;
+                name = "main";
+                visual = "";
+                radius = 5;
+                passThrough = 1;
+                explosionShielding = 0;
+            };
+        };
+        class Damage {
+            tex[]={PATHTOEF(apl,data\vehicle_destr1024_1024_mc.paa)};
+            mat[] = {PATHTOF(data\trailObjects.rvmat)};
+        };
     };
+
 
     class ACE_Wheel: ACE_RepairItem_Base {
         EGVAR(cargo,size) = 1;
         EGVAR(cargo,canLoad) = 1;
-        author = "Hawkins";
+        author = ECSTRING(common,ACETeam);
         scope = 2;
         model = QUOTE(PATHTOF(data\ace_wheel.p3d));
         displayName = CSTRING(SpareWheel);
         picture = QUOTE(PATHTOF(ui\tire_ca.paa));
+        hiddenselection[] = {"main"};
+        class HitPoints {
+            class HitMain {
+                armor = 15;
+                material = -1;
+                name = "main";
+                visual = "";
+                radius = 10;
+                passThrough = 1;
+                explosionShielding = 0;
+            };
+        };
+        class Damage {
+            tex[] = {PATHTOEF(apl,data\vehicle_destr1024_1024_mc.paa)};
+            mat[] = {PATHTOF(data\trailObjects.rvmat)};
+        };
     };
 
     // disable vanilla repair
