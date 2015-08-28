@@ -3,6 +3,5 @@
 ADDON = false;
 
 PREP(moduleCrate);
-PREP(handleKilled);
 
 ADDON = true;
