@@ -892,11 +892,59 @@ class CfgVehicles {
         };
     };
 
+//QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa))
+//QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa))
+//QUOTE(PATHTOEF(crate,data\ace_crate_medium_co.paa))
+
     class ACE_Crate_Medium_Empty;
     class ACE_medicalSupplyCrate: ACE_Crate_Medium_Empty {
         displayName = CSTRING(medicalSupplyCrate);
-        hiddenselection[] = {"Logo1","Logo5","Logo7","Logo10","Logo11","Text1","Text2","Text3","Text4"};
-        hiddenSelectionsTextures[] = {QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa))};
+        hiddenSelections[] = {
+            "Crate",
+            "Logo1",
+            "Logo2",
+            "Logo3",
+            "Logo4",
+            "Logo5",
+            "Logo6",
+            "Logo7",
+            "Logo8",
+            "Logo9",
+            "Logo10",
+            "Logo11",
+            "Logo12",
+            "Logo13",
+            "Logo14",
+            "Logo15",
+            "Logo16",
+            "Text1",
+            "Text2",
+            "Text3",
+            "Text4"
+        };
+        hiddenSelectionsTextures[] = {
+            QUOTE(PATHTOEF(crate,data\ace_crate_medium_co.paa)),    //Crate
+            QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),       //Logo1
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo2
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo3
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo4
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo5
+            QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),       //Logo6
+            QUOTE(PATHTOEF(crate,data\icons\medicalText_ca.paa)),   //Logo7
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo8
+            QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),       //Logo9
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo10
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo11
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo13
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo12
+            QUOTE(PATHTOEF(crate,data\icons\medical_ca.paa)),       //Logo14
+            QUOTE(PATHTOEF(crate,data\icons\medicalText_ca.paa)),   //Logo15
+            "#(argb,8,8,3)color(0,0,0,0,ca)",                       //Logo16
+            QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),          //Text1
+            QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),          //Text2
+            QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa)),          //Text3
+            QUOTE(PATHTOEF(crate,data\icons\ACE3_ca.paa))           //Text4
+        };
         class TransportItems {
             MACRO_ADDITEM(ACE_fieldDressing,50);
             MACRO_ADDITEM(ACE_morphine,25);

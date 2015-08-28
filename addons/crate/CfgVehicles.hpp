@@ -10,7 +10,6 @@ class CfgVehicles {
         scopeCurator = 2;
         displayName = CSTRING(MediumCrate);
         model = PATHTOF(data\ACE_crate_medium.p3d);
-        hiddenselection[] = {"Crate","Logo1","Logo2","Logo3","Logo4","Logo5","Logo6","Logo7","Logo8","Logo9","Logo10","Logo11","Logo12","Logo13","Logo14","Logo15","Logo16","Text1","Text2","Text3","Text4"};
-        hiddenSelectionsTextures[] = {QUOTE(PATHTOF(data\ace_crate_medium_co.paa))};
+        hiddenSelections[] = {"Crate","Logo1","Logo2","Logo3","Logo4","Logo5","Logo6","Logo7","Logo8","Logo9","Logo10","Logo11","Logo12","Logo13","Logo14","Logo15","Logo16","Text1","Text2","Text3","Text4"};
     };
 };
