@@ -16,8 +16,8 @@
  *
  * Public: No
  */
- private ["_texture", "_selection"];
-params ["_logic", "_units", "_activated"]
+private ["_texture", "_selection"];
+params ["_logic", "_units", "_activated"];
 
 
 if !(isServer) exitWith {};
