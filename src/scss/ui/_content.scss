@@ -1,0 +1,19 @@
+.iconText {
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    &-icon {
+        width: 64px;
+        height: 64px;
+        float: left;
+        margin: 0 20px 0 0;
+    }
+
+    &-text {
+        display: block;
+        padding-top: 16px;
+        @media #{$small-only} {
+            padding-top: 0;
+        }
+    }
+}
