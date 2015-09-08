@@ -13,36 +13,31 @@ class Extended_PostInit_EventHandlers {
 class Extended_Init_EventHandlers {
     class Car {
         class ADDON {
-            init = QUOTE(_this call DFUNC(addRepairActions));
+            init = QUOTE(_this call DFUNC(addRepairActions); _this call DFUNC(addSpareParts));
         };
     };
 
     class Tank {
         class ADDON {
-            init = QUOTE(_this call DFUNC(addRepairActions));
+            init = QUOTE(_this call DFUNC(addRepairActions); _this call DFUNC(addSpareParts));
         };
     };
 
     class Helicopter {
         class ADDON {
-            init = QUOTE(_this call DFUNC(addRepairActions));
+            init = QUOTE(_this call DFUNC(addRepairActions); _this call DFUNC(addSpareParts));
         };
     };
 
     class Plane {
         class ADDON {
-            init = QUOTE(_this call DFUNC(addRepairActions));
+            init = QUOTE(_this call DFUNC(addRepairActions); _this call DFUNC(addSpareParts));
         };
     };
 
     class Ship_F {
         class ADDON {
-            init = QUOTE(_this call DFUNC(addRepairActions));
-        };
-    };
-    class ACE_RepairItem_Base {
-        class ADDON {
-            init = QUOTE(if (!isnil QUOTE(QEFUNC(cargo,initObject))) then {_this call EFUNC(cargo,initObject)});
+            init = QUOTE(_this call DFUNC(addRepairActions); _this call DFUNC(addSpareParts));
         };
     };
 };
