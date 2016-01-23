@@ -15,6 +15,13 @@
 
 params ["_vehicle", "_turret", "_distance", ["_showHint", false], ["_playSound", true]];
 
+GVAR(Enabled) = false;
+GVAR(time) = -1;
+
+[GVAR(PFH)] call CBA_fnc_removePerFrameHandler;
+[_vehicle, format ["%1_%2", QGVAR(Azimuth), _turret], 0] call EFUNC(common,setVariablePublic);
+
+/*
 private _turretConfig = [configFile >> "CfgVehicles" >> typeOf _vehicle, _turret] call EFUNC(common,getTurretConfigPath);
 
 if (isNil "_distance") then {
@@ -119,3 +126,4 @@ if (_playSound) then {
 if (_showHint) then {
     [format ["%1: %2", localize LSTRING(ZeroedTo), _distance]] call EFUNC(common,displayTextStructured);
 };
+*/

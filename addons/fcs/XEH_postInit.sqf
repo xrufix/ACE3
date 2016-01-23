@@ -4,6 +4,11 @@ GVAR(enabled) = false;
 GVAR(time) = 0;
 GVAR(position) = [0,0,0];
 
+GVAR(speedArr) = [];
+for "_i" from 1 to 1/FCS_INTERVAL do {
+    GVAR(speedArr) pushBack 0;
+};
+
 if (!hasInterface) exitWith {};
 
 #include "initKeybinds.sqf"

@@ -9,4 +9,7 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_FCS
 #endif
 
+#define FCS_INTERVAL 0.1
+#define DIFFANGLE(old,new) ((((new - old) mod 360) + 540) mod 360) - 180
+
 #include "\z\ace\addons\main\script_macros.hpp"
