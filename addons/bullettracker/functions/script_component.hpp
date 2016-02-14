@@ -1,0 +1,1 @@
+#include "\z\ace\addons\bullettracker\script_component.hpp"
