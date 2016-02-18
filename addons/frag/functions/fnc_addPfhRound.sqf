@@ -10,9 +10,6 @@ if (!GVAR(enabled)) exitWith {};
 //_enabled = getNumber (configFile >> "CfgAmmo" >> _type >> QGVAR(enabled));
 //if(_enabled < 1) exitWith {};
 
-if(_round in GVAR(blackList)) exitWith {
-    GVAR(blackList) = GVAR(blackList) - [_round];
-};
 
 // Exit on max track
 if( (count GVAR(objects)) > GVAR(MaxTrack)) exitWith { };
@@ -31,15 +28,7 @@ if(_gun == ACE_player) then {
 
 _doSpall = false;
 if(GVAR(SpallEnabled)) then {
-    if(GVAR(spallIsTrackingCount) <= 0) then {
-        GVAR(spallHPData) = [];
-    };
-    if(GVAR(spallIsTrackingCount) > 5) then {
-        // ACE_player sideChat "LIMT!";
-    } else {
-        _doSpall = true;
-        GVAR(spallIsTrackingCount) = GVAR(spallIsTrackingCount) + 1;
-    };
+
 };
 // ACE_player sideChat format["c: %1", GVAR(spallIsTrackingCount)];
 

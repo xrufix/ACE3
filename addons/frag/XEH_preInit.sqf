@@ -2,6 +2,8 @@
 
 ADDON = false;
 
+PREP(bulletDestroyedEHFrag);
+PREP(bulletDestroyedEHSpall);
 PREP(doSpall);
 PREP(fired);
 PREP(frago);

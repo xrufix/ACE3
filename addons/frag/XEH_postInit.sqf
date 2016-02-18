@@ -21,10 +21,13 @@ if(isServer) then {
     ["firedPlayerVehicleNonLocal", DFUNC(fired)] call EFUNC(common,addEventHandler);
     ["firedNonPlayerVehicle", DFUNC(fired)] call EFUNC(common,addEventHandler);
 
+    ["bulletDestroyedFrag", DFUNC(bulletDestroyedFragEH)] call EFUNC(common,addEventHandler);
+    ["bulletDestroyedSpall", DFUNC(bulletDestroyedSpallEH)] call EFUNC(common,addEventHandler);
+
     [FUNC(masterPFH), 0, []] call CBA_fnc_addPerFrameHandler;
 
 }] call EFUNC(common,addEventHandler);
 
 //Cache for ammo type configs
-GVAR(cacheRoundsTypesToTrack) = createLocation ["ACE_HashLocation", [-10000,-10000,-10000], 0, 0];
-GVAR(cacheRoundsTypesToTrack) setText QGVAR(cacheRoundsTypesToTrack);
+GVAR(cacheRoundsTypesToTrackFrag) = createLocation ["ACE_HashLocation", [-10000,-10000,-10000], 0, 0];
+GVAR(cacheRoundsTypesToTrackFrag) setText QGVAR(cacheRoundsTypesToTrackFrag);
