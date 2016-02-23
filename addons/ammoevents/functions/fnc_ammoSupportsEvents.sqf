@@ -24,7 +24,7 @@ private _fnc_ammoSupportsEvents = {
 
     // This ammo is explosive
     private _explosionEffects = getText (_ammoConfig >> "explosionEffects");
-    if !(_explosionEffects find "ACE_ExplosionEffects_" == 0) exitWith {false};
+    if !(_explosionEffects isEqualTo format ["ACE_ExplosionEffects_",_ammo]) exitWith {false};
 
     true
 };
