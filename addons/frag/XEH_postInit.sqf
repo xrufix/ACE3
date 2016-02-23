@@ -28,6 +28,5 @@ if(isServer) then {
 
 }] call EFUNC(common,addEventHandler);
 
-//Cache for ammo type configs
-GVAR(cacheRoundsTypesToTrackFrag) = createLocation ["ACE_HashLocation", [-10000,-10000,-10000], 0, 0];
-GVAR(cacheRoundsTypesToTrackFrag) setText QGVAR(cacheRoundsTypesToTrackFrag);
+// Cache for ammo type configs
+GVAR(cacheRoundsTypesToFrag) = call CBA_fnc_createNamespace;
