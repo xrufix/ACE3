@@ -35,34 +35,11 @@ if (_unit == ACE_player) then {
 };
 if (!_continue) exitWith {};
 
-
 if (_projectile in GVAR(blackList)) exitWith {
     GVAR(blackList) = GVAR(blackList) - [_projectile];
 };
 
-private _shouldFrag = GVAR(cacheRoundsTypesToFrag) getVariable _ammo;
-if (isNil "_shouldFrag") then {
-    TRACE_1("no cache for round",_ammo);
-
-    if (!EGVAR(common,settingsInitFinished)) exitWith {
-        //Just incase fired event happens before settings init, don't want to set cache wrong if spall setting changes
-        TRACE_1("Settings not init yet - exit without setting cache",_ammo);
-        _shouldFrag = false;
-    };
-
-    //Read configs and test if it would actually cause a frag, using same logic as FUNC(pfhRound)
-    private _skip = getNumber (configFile >> "CfgAmmo" >> _ammo >> QGVAR(skip));
-    private _explosive = getNumber (configFile >> "CfgAmmo" >> _ammo >> "explosive");
-    private _indirectRange = getNumber (configFile >> "CfgAmmo" >> _ammo >> "indirectHitRange");
-    private _force = getNumber (configFile >> "CfgAmmo" >> _ammo >> QGVAR(force));
-    private _fragPower = getNumber(configFile >> "CfgAmmo" >> _ammo >> "indirecthit")*(sqrt((getNumber (configFile >> "CfgAmmo" >> _ammo >> "indirectHitRange"))));
-
-    _shouldFrag = (_skip == 0) && {(_force == 1) || {_explosive > 0.5 && {_indirectRange >= 4.5} && {_fragPower >= 35}}};
-    TRACE_6("SettingCache[willFrag?]",_skip,_explosive,_indirectRange,_force,_fragPower,_shouldFrag);
-    GVAR(cacheRoundsTypesToFrag) setVariable [_ammo, _shouldFrag];
-};
-
-if (_shouldFrag) then {
+if ([_ammo] call FUNC(ammoShouldFrag)) then {
     if !([_ammo] call EFUNC(ammoevents,ammoSupportsEvents)) then {
         // If the projectile doesn't support events, track it
         TRACE_3("Running Frag Tracking: ",_unit,_ammo,_projectile);
