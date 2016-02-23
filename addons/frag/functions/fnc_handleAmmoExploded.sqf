@@ -16,14 +16,6 @@
 
 params ["_ammo","_posAGL"];
 
-// @todo: Cache _shouldFrag
-private _ammoCfg = configFile >> "CfgAmmo" >> _ammo;
-private _skip = getNumber (_ammoCfg >> QGVAR(skip));
-private _explosive = getNumber (_ammoCfg >> "explosive");
-private _indirectRange = getNumber (_ammoCfg >> "indirectHitRange");
-private _force = getNumber (_ammoCfg >> QGVAR(force));
-private _fragPower = getNumber(_ammoCfg >> "indirecthit")*(sqrt((getNumber (_ammoCfg >> "indirectHitRange"))));
+if !([_ammo] call FUNC(ammoShouldFrag)) exitWith {};
 
-if ((_skip == 0) && {(_force == 1) || {_explosive > 0.5 && {_indirectRange >= 4.5} && {_fragPower >= 35}}}) then {
-    [QGVAR(frag_eh), [_ammo, AGLtoASL _posAGL]] call EFUNC(common,localEvent);
-};
+[QGVAR(frag_eh), [_ammo, AGLtoASL _posAGL]] call EFUNC(common,localEvent);
