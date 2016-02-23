@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACE">
     <Package name="Frag">
+        <Key ID="STR_ACE_Frag_Module_DisplayName">
+            <English>Fragmentation Simulation</English>
+            <Polish>Symulacja fragmentacji</Polish>
+            <Spanish>Simulación de fragmentación</Spanish>
+            <German>Splittersimulation</German>
+            <Czech>Simulace fragmentů</Czech>
+            <Portuguese>Simulação de fragmentação</Portuguese>
+            <French>Simulation de la fragmentation</French>
+            <Hungarian>Repesz-szimuláció</Hungarian>
+            <Russian>Симуляция осколков</Russian>
+        </Key>
         <Key ID="STR_ACE_Frag_EnableFrag">
             <English>Fragmentation Simulation</English>
             <Polish>Symulacja fragmentacji</Polish>
@@ -11,6 +22,7 @@
             <French>Simulation de la fragmentation</French>
             <Hungarian>Repesz-szimuláció</Hungarian>
             <Russian>Симуляция осколков</Russian>
+            <Italian>Simulazione della frammentazione</Italian>
         </Key>
         <Key ID="STR_ACE_Frag_EnableFrag_Desc">
             <English>Enable the ACE Fragmentation Simulation</English>
@@ -22,6 +34,7 @@
             <French>Active la simulation ACE de la fragmentation</French>
             <Hungarian>Az ACE repesz-szimuláció engedélyezése</Hungarian>
             <Russian>Включить симуляцию осколков ACE</Russian>
+            <Italian>Attiva la simulazione della frammentazione di ACE</Italian>
         </Key>
         <Key ID="STR_ACE_Frag_EnableSpall">
             <English>Spalling Simulation</English>
@@ -33,6 +46,7 @@
             <French>Simulation d'éclat</French>
             <Hungarian>Pattogzás-szimuláció</Hungarian>
             <Russian>Симуляция обломков</Russian>
+            <Italian>Simulazione delle scheggiature</Italian>
         </Key>
         <Key ID="STR_ACE_Frag_EnableSpall_Desc">
             <English>Enable the ACE Spalling Simulation</English>
@@ -44,6 +58,15 @@
             <French>Active la simulation d'éclat ACE</French>
             <Hungarian>Az ACE pattogzás-szimuláció engedélyezése</Hungarian>
             <Russian>Включить симуляцию обломков ACE</Russian>
+            <Italian>Attiva la simulazione delle scheggiature di ACE</Italian>
+        </Key>
+        <Key ID="STR_ACE_Frag_EnableReflections">
+            <English>Explosion Reflections Simulation</English>
+            <Polish>Symulacja odbicia eksplozji</Polish>
+        </Key>
+        <Key ID="STR_ACE_Frag_EnableReflections_Desc">
+            <English>Enable the ACE Explosion Reflection Simulation</English>
+            <Polish>Włącz symulację odbicia eksplozji ACE</Polish>
         </Key>
         <Key ID="STR_ACE_Frag_EnableDebugTrace">
             <English>(SP Only) Frag/Spall Debug Tracing</English>
@@ -55,6 +78,7 @@
             <French>(SP uniquement) Fragmentation/éclat debug</French>
             <Hungarian>(Csak SP) Repesz/Pattogzás debug követés</Hungarian>
             <Russian>(Только для одиночной игры) Отслеживаение/отладка осколков</Russian>
+            <Italian>(Solo SP) debug delle frammentazioni e scheggiature</Italian>
         </Key>
         <Key ID="STR_ACE_Frag_EnableDebugTrace_Desc">
             <English>(SP Only) Requires a mission/editor restart. Enables visual tracing of fragmentation and spalling rounds in SP game mode only.</English>
@@ -66,6 +90,7 @@
             <French>(SP seulement) Requiert un redémarrage de mission ou de l'éditeur. Active les traceurs visuels de fragmentation et d'éclats en mode solo seulement</French>
             <Hungarian>(Csak SP) Küldetés/Editor újraindítás szükséges. Engedélyezi a repeszek és pattogzó lövedékek vizuális nyomkövetését, csak egyjátékos módok alatt.</Hungarian>
             <Russian>(Только для одиночной игры) Требует перезапуска миссии/редактора. Включает визуальные следы от осколков и обломков в режиме одиночной игры.</Russian>
+            <Italian>(Solo SP) Richiede un riavvio della missione/editor. Abilia una traccia visiva della frammentazione e scheggiatura solo in modalità SP.</Italian>
         </Key>
     </Package>
 </Project>
