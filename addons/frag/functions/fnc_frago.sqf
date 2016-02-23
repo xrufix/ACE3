@@ -9,7 +9,6 @@
 if(!isServer) exitWith { };
 
 BEGIN_COUNTER(frago);
-// _startTime = ACE_diagTime;
 
 params ["_shellType", "_lastPos", ["_gun", nil]];
 
@@ -207,5 +206,4 @@ if(_isArmed && (count _objects) > 0) then {
     // ACE_player sideChat format["total frags: %1", GVAR(TOTALFRAGS)];
     // ACE_player sideChat format["tracks: %1", (count GVAR(trackedObjects))];
 // #endif
-// _endTime = ACE_diagTime;
 END_COUNTER(frago);
