@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/acemod/ACE3/blob/master/extras/assets/logo/black/ACE3-Logo.jpg" width="480">
+    <img src="https://github.com/acemod/ACE3/raw/master/extras/assets/logo/black/ACE3-Logo.jpg" width="480">
 </p>
 
 <p align="center">
@@ -64,7 +64,6 @@ The mod is **built modularly**, so almost any included PBO can be easily removed
 - Magazine repacking
 - Realistic weapon overheating mechanic
 - Combat deafness (temporary loss of hearing) simulation
-- Improved ragdoll physics
 - Improved interactions for AARs and ammo bearers
 - Adjustable sniper scopes
 - No idle animation with lowered weapon
