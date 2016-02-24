@@ -87,8 +87,8 @@ if (_simulationStep != 0) then {
     };
 };
 
-// TODO: Find new solution for vertical target angle
-[_vehicle,_turret,_distance,0] call FUNC(calculateSolution);
+private _verticalAngle = asin (((AGLToASL positionCameraToWorld [0,0,1]) select 2) - ((AGLToASL positionCameraToWorld [0,0,0]) select 2));
+[_vehicle,_turret,_distance,_verticalAngle] call FUNC(calculateSolution);
 
 GVAR(PFH) = [{
     (_this select 0) params ["_vehicle","_turret","_distance","_timeToTarget"];
@@ -113,7 +113,7 @@ GVAR(PFH) = [{
     [_vehicle, format ["%1_%2", QGVAR(Azimuth), _turret], _fcsAngle] call EFUNC(common,setVariablePublic);
 
     if ((diag_tickTime mod 1) < 0.1) then {
-        player sideChat format ["dA=%1; TS=%2; T=%3; OA=%3",_dWeapDir,_targetSpeedAvg,_fcsAngle];
+        player sideChat format ["dA=%1; TS=%2; FA=%3; TTT=%4",_dWeapDir,_targetSpeedAvg,_fcsAngle,_timeToTarget];
     };
 
     GVAR(weapDir) = _weapDir;
