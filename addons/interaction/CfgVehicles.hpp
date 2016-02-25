@@ -483,6 +483,20 @@ class CfgVehicles {
             class ACE_MainActions: ACE_MainActions {
                 position = "[-0.172852,0.164063,-0.476091]";
             };
+            class ACE_MyCustomAction {
+                displayName = "Custom Action";
+                selection = "";
+                position = "[0.172852,0.164063,-0.476091]";
+                distance = 2;
+                condition = "true";
+                statement = "hint 'ACE_MyCustomAction'";
+                class ACE_MyCustomSubAction {
+                    displayName = "Custom Sub Action";
+                    condition = "true";
+                    statement = "hint 'ACE_MyCustomSubAction'";
+                };
+
+            };
         };
     };
 
@@ -571,7 +585,7 @@ class CfgVehicles {
     class Land_PortableLight_double_off_F: Land_PortableLight_double_F {
         scope = 1;
     };
-    
+
     class RoadCone_F: ThingX {
         class ACE_Actions {
             class ACE_MainActions {
