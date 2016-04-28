@@ -26,6 +26,8 @@ if (vehicle _unit != _unit) exitWith {};
 
 //Start fast roping
 if (getMass _dummy != 80) exitWith {
+    [QGVAR(debugMessage), [_unit, "PFH init"]] call EFUNC(common,globalEvent);
+
     //Fix for twitchyness
     _dummy setMass 80;
     _dummy setCenterOfMass [0, 0, -2];
@@ -41,6 +43,7 @@ if (getMass _dummy != 80) exitWith {
 //Make sure this isn't executed before the unit is actually fastroping
 //Note: Stretching ropes does not change ropeLength
 if ((isNull attachedTo _unit) && {ropeLength _ropeTop > 0.5}) exitWith {
+    [QGVAR(debugMessage), [_unit, "(isNull attachedTo _unit) returned true - exiting PFH"]] call EFUNC(common,globalEvent);
     [_pfhHandle] call CBA_fnc_removePerFrameHandler;
 };
 
@@ -49,6 +52,8 @@ _dummy setVelocity [0,0,-6];
 
 //Check if fast rope is finished
 if (((getPos _unit select 2) < 0.2) || {ropeLength _ropeTop == 34.5} || {vectorMagnitude (velocity _vehicle) > 5} || {!(alive _unit)} || {captive _unit}) exitWith {
+    [QGVAR(debugMessage), [_unit, "Fastroping ended correctly"]] call EFUNC(common,globalEvent);
+
     detach _unit;
 
     //Reset rope

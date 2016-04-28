@@ -42,6 +42,8 @@ _unit = {
 } forEach (attachedObjects (_brokenRope select 3));
 
 if !(isNil "_unit") then {
+    [QGVAR(debugMessage), [_unit, "onBreakRope triggered with attached unit"]] call EFUNC(common,globalEvent);
+
     if (_part == "top") then {
         detach _unit;
     } else {
