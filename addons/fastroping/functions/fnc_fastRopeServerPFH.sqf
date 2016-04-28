@@ -17,12 +17,16 @@
 
 #include "script_component.hpp"
 params ["_arguments", "_pfhHandle"];
-_arguments params ["_unit", "_vehicle", "_rope", "_ropeIndex"];
+_arguments params ["_unit", "_vehicle", "_rope", "_ropeIndex", "_hasBeenAttached"];
 _rope params ["_attachmentPoint", "_ropeTop", "_ropeBottom", "_dummy", "_hook", "_occupied"];
 private ["_vectorUp", "_vectorDir", "_origin"];
 
 //Wait until the unit is actually outside of the helicopter
 if (vehicle _unit != _unit) exitWith {};
+if (!_hasBeenAttached && {!(isNull attachedTo _unit)}) then {
+    _hasBeenAttached = true;
+    _arguments set [4, true];
+};
 
 //Start fast roping
 if (getMass _dummy != 80) exitWith {
@@ -42,7 +46,7 @@ if (getMass _dummy != 80) exitWith {
 //Check if rope broke and unit is falling
 //Make sure this isn't executed before the unit is actually fastroping
 //Note: Stretching ropes does not change ropeLength
-if ((isNull attachedTo _unit) && {ropeLength _ropeTop > 0.5}) exitWith {
+if (_hasBeenAttached && {isNull attachedTo _unit} && {ropeLength _ropeTop > 0.5}) exitWith {
     [QGVAR(debugMessage), [_unit, "(isNull attachedTo _unit) returned true - exiting PFH"]] call EFUNC(common,globalEvent);
     [_pfhHandle] call CBA_fnc_removePerFrameHandler;
 };
