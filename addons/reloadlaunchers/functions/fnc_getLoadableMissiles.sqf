@@ -12,10 +12,7 @@
  */
 #include "script_component.hpp"
 
-private ["_unit", "_weapon"];
-
-_unit = _this select 0;
-_weapon = _this select 1;
+params ["_unit", "_weapon"];
 
 // get available magazines of reloader, Note: "magazines" does not include currently loaded magazines
 private "_magazines";

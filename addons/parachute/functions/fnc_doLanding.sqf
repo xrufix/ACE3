@@ -14,8 +14,7 @@
  * Public: No
  */
 #include "script_component.hpp"
-private["_unit"];
-_unit = _this select 0;
+params ["_unit"];
 GVAR(PFH) = false;
 [_unit, "AmovPercMevaSrasWrflDf_AmovPknlMstpSrasWrflDnon", 2] call EFUNC(common,doAnimation);
 _unit setVariable [QGVAR(chuteIsCut), false, true];

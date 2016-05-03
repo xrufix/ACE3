@@ -12,13 +12,7 @@
  *
  */
 #include "script_component.hpp"
-
-private ["_unit", "_target", "_parameters"];
-
-_unit = _this select 1;
-_target = _this select 0;
-_parameters = _this select 2; // ???
-
+params ["_target", "_unit"];
 private ["_actions", "_weapon", "_loadableMissiles"];
 
 _actions = [];

@@ -33,12 +33,10 @@ _data = [];
 _isAir = _type isKindOf "Air";
 
 _fnc_addTurretUnit = {
-    private  ["_config", "_path", "_role", "_simulationEmpty", "_simulationLaserDesignate", "_simulationOther", "_magazine", "_ammo", "_simulation"];
+    params ["_config", "_path"];
+    private  ["_role", "_simulationEmpty", "_simulationLaserDesignate", "_simulationOther", "_magazine", "_ammo", "_simulation"];
 
-    _config = _this select 0;
-    _path = _this select 1;
     _role = CARGO;
-
     _simulationEmpty = 0;
     _simulationLaserDesignate = 0;
     _simulationOther = 0;
@@ -74,26 +72,22 @@ _fnc_addTurretUnit = {
         _role = FFV;
     };
 
-    _data pushBack [_path, _role];  
+    _data pushBack [_path, _role];
 };
 
 
 _fnc_addTurret = {
-
-    private ["_config", "_path", "_count", "_offset", "_index", "_turretPath", "_turretConfig"];
-
-    _config = _this select 0;
-    _path = _this select 1;
+    params ["_config", "_path"];
+    private ["_count", "_offset", "_index", "_turretPath", "_turretConfig"];
 
     _config = _config >> "Turrets";
     _count = count _config;
-
-    _offset = 0;    
+    _offset = 0;
 
     for "_index" from 0 to (_count - 1) do {
         _turretPath = _path + [_index - _offset];
         _turretConfig = _config select _index;
-        if (isClass _turretConfig) then {           
+        if (isClass _turretConfig) then {
             [_turretConfig, _turretPath] call _fnc_addTurretUnit;
             [_turretConfig, _turretPath] call _fnc_addTurret;
         } else {

@@ -16,13 +16,8 @@
  */
 
 #include "script_component.hpp"
-
-private ["_caller","_target","_part","_selectionName","_removeItem", "_tourniquets", "_items", "_output", "_className"];
-_caller = _this select 0;
-_target = _this select 1;
-_selectionName = _this select 2;
-_className = _this select 3;
-_items = _this select 4;
+params ["_caller", "_target", "_selectionName", "_className", "_items"];
+private ["_part", "_removeItem", "_tourniquets", "_output"];
 
 if (count _items == 0) exitWith {false};
 

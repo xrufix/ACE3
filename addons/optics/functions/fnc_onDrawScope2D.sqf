@@ -2,10 +2,7 @@
 #include "script_component.hpp"
 
 disableSerialization;
-
-private "_display";
-
-_display = _this select 0;
+params ["_display"];
 
 if (!ctrlShown (_display displayCtrl 154)) exitWith {
     (_display displayCtrl 1713001) ctrlShow false;

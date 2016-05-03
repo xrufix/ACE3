@@ -1,36 +1,33 @@
 //fnc_findReflections.sqf
 #include "script_component.hpp"
-
-private ["_split", "_radi", "_params", "_pos", "_explosiveInfo", "_los", "_nlos", "_zIndex", "_depth", "_indirectHitRange", "_indirectHit", "_distanceCount", "_lastPos", "_test", "_vec", "_testPos", "_buckets", "_excludes", "_bucketIndex", "_bucketPos", "_bucketList", "_c", "_index", "_blist", "_avgX", "_avgY", "_avgZ", "_bpos", "_distance", "_hitFactor", "_hit", "_range", "_refExp", "_rand", "_i", "_x", "_res", "_forEachIndex", "_explosions", "_can", "_dirvec", "_zAng"];
+params ["_args", "_pfhID"];
+_args params ["_pos", "_explosiveInfo", "_los", "_nlos", "_zIndex", "_depth", "_rand"];
+_explosiveInfo params ["_indirectHitRange", "_indirectHit"];
+private [
+    "_split", "_distanceCount", "_lastPos", "_test", "_vec", "_testPos", "_buckets", "_excludes",
+    "_bucketIndex", "_bucketPos", "_bucketList", "_c", "_index", "_blist", "_avgX", "_avgY",
+    "_avgZ", "_bpos", "_distance", "_hitFactor", "_hit", "_range", "_refExp", "_res",
+    "_explosions", "_zAng"
+];
 
 BEGIN_COUNTER(fnc_findReflections);
-_params = _this select 0;
-_pos = _params select 0;
-_explosiveInfo = _params select 1;
-_los = _params select 2;
-_nlos = _params select 3;
-_zIndex = _params select 4;
-_depth = _params select 5;
-_rand = _params select 6;
 
 _split = 15;
-_radi = (360/_split*_depth);
+_radi = (360 / _split * _depth);
 
 // player sideChat format["p: %1", _explosiveInfo];
-_indirectHitRange = _explosiveInfo select 0;
-_indirectHit = _explosiveInfo select 1;
-_distanceCount = (floor _indirectHitRange*4) min 100;
+_distanceCount = (floor _indirectHitRange * 4) min 100;
 
 if(_zIndex < 5) then {
     _lastPos = _pos;
-    _zAng = _zIndex*20+2;
+    _zAng = _zIndex * 20 + 2;
     if(_zAng > 80) then {
         _radi = 1;
         _zAng = 90;
     };
     for "_i" from 0 to _radi do {
         _test = true;
-        _vec = [1, ((_i*_split)+_rand) mod 360, _zAng] call CBA_fnc_polar2vect;
+        _vec = [1, ((_i * _split) + _rand) mod 360, _zAng] call CBA_fnc_polar2vect;
         for "_x" from 1 to _distanceCount do {
             _testPos = _pos vectorAdd (_vec vectorMultiply _x);
             // drop ["\a3\data_f\Cl_basic","","Billboard",1,15,ASLtoATL _testPos,[0,0,0],1,1.275,1.0,0.0,[1],[[1,0,0,1]],[0],0.0,2.0,"","",""];
@@ -49,7 +46,7 @@ if(_zIndex < 5) then {
             _lastPos = _testPos;
         };
     };
-    _params set[4, _zIndex+1];
+    _args set [4, _zIndex + 1];
 } else {
     _depth = _depth + 1;
     _buckets = [];
@@ -90,21 +87,22 @@ if(_zIndex < 5) then {
         _avgZ = 0;
 
         {
-            _avgX = _avgX + (_x select 0);
-            _avgY = _avgY + (_x select 1);
-            _avgZ = _avgZ + (_x select 2);
+            _x params ["_x", "_y", "_z"];
+            _avgX = _avgX + _x;
+            _avgY = _avgY + _y;
+            _avgZ = _avgZ + _z;
         } forEach _blist;
         _c = count _blist;
-        _bpos = [_avgX/_c, _avgY/_c, _avgZ/_c];
+        _bpos = [_avgX / _c, _avgY / _c, _avgZ / _c];
 
         _distance = _pos vectorDistance _bpos;
-        _hitFactor = 1-(((_distance/(_indirectHitRange*4)) min 1) max 0);
+        _hitFactor = 1 - (((_distance / (_indirectHitRange * 4)) min 1) max 0);
         // _hitFactor = 1/(_distance^2);
-        _hit = _indirectHit*_hitFactor;
-        _hit = (floor (_hit/4)) min 500;
-        _hit = _hit - (_hit%10);
-        _range = (floor (_indirectHitRange-(_distance/4))) min 100;
-        _range = _range - (_range%2);
+        _hit = _indirectHit * _hitFactor;
+        _hit = (floor (_hit / 4)) min 500;
+        _hit = _hit - (_hit % 10);
+        _range = (floor (_indirectHitRange - (_distance / 4))) min 100;
+        _range = _range - (_range % 2);
 
         if(_hit >= 10 && _range > 0) then {
             // TEST_ICONS pushBack [_bpos, format["h: %1, r: %2, hf: %3 d: %4 ihr: %5", _hit, _range, _hitFactor, _distance, _indirectHitRange*4]];
@@ -116,13 +114,13 @@ if(_zIndex < 5) then {
             _explosions pushBack [_refExp, _bpos, _hit, _distance, _indirectHitRange/4, _depth];
 
         };
-        if(count _explosions > (_radi*2)/_depth) exitWith {};
+        if(count _explosions > (_radi * 2) / _depth) exitWith {};
     } forEach _buckets;
     // _can = "Land_Bricks_V4_F" createVehicle (ASLtoATL _pos);
     // _dirvec = _pos vectorFromTo ((ATLtoASL (player modelToWorldVisual (player selectionPosition "Spine3"))));
     // _dirvec = _dirvec vectorMultiply 100;
     // _can setVelocity _dirvec;
     [DFUNC(doExplosions), 0, [_explosions, 0]] call CBA_fnc_addPerFrameHandler;
-    [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+    [_pfhID] call CBA_fnc_removePerFrameHandler;
 };
 END_COUNTER(fnc_findReflections);

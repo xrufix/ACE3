@@ -433,7 +433,7 @@ switch (toLower _mode) do {
         disableSerialization;
         _dlg = finddisplay 49;
         _dlg displayAddEventHandler ["KeyDown", {
-            _key = _this select 1;
+            params ["_key"];
             !(_key == 1)
         }];
 

@@ -13,16 +13,9 @@
  * NONE
  */
 #include "script_component.hpp"
+params ["_unit", "_target", "_weapon", "_magazine"];
 
-private ["_unit", "_target", "_weapon", "_magazine"];
-
-_unit = _this select 0;
-_target = _this select 1;
-_weapon = _this select 2;
-_magazine = _this select 3;
-
-private "_reloadTime";
-_reloadTime = getNumber (configFile >> "CfgWeapons" >> _weapon >> "magazineReloadTime");
+private _reloadTime = getNumber (configFile >> "CfgWeapons" >> _weapon >> "magazineReloadTime");
 
 // do animation
 [_unit] call EFUNC(common,goKneeling);

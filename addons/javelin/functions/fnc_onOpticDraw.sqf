@@ -147,7 +147,7 @@ if((call CBA_fnc_getFoV) select 1 > 9) then {
 };
 
 FUNC(disableFire) = {
-    _firedEH = _this select 0;
+    params ["_firedEH"];
 
     if(_firedEH < 0 && difficulty > 0) then {
         _firedEH = [ACE_player, "DefaultAction", {true}, {
@@ -159,7 +159,7 @@ FUNC(disableFire) = {
     _firedEH
 };
 FUNC(enableFire) = {
-    _firedEH = _this select 0;
+    params ["_firedEH"];
 
     if(_firedEH > 0 && difficulty > 0) then {
         [ACE_player, "DefaultAction", _firedEH] call EFUNC(common,removeActionEventHandler);

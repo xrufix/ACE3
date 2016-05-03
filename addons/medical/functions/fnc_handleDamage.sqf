@@ -85,7 +85,7 @@ private _vehicle = vehicle _unit;
 private _effectiveSelectionName = _selection;
 if ((_vehicle != _unit) && {!(_vehicle isKindOf "StaticWeapon")} && {_shooter in [objNull, driver _vehicle, _vehicle]} && {_projectile == ""} && {_selection == ""}) then {
     if (GVAR(enableVehicleCrashes)) then {
-        _effectiveSelectionName = _this select 1; //pull random selection from HDC
+        _effectiveSelectionName = _selection; //pull random selection from HDC
     };
 };
 

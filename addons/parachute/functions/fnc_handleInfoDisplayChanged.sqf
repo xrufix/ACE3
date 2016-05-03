@@ -12,10 +12,7 @@
  */
 #include "script_component.hpp"
 
-private ["_dialog", "_type"];
-
-_dialog = _this select 0;
-_type = _this select 1;
+params ["_dialog", "_type"];
 
 // don't do anything in noob mode
 if (cadetMode) exitWith {};

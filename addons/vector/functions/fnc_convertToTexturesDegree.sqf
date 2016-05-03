@@ -6,9 +6,7 @@ converts azimuth into array of textures for the vectors scripted info control
 
 #include "script_component.hpp"
 
-private "_number";
-
-_number = _this select 0;
+params ["_number"];
 
 if (GVAR(useMil)) then {
 

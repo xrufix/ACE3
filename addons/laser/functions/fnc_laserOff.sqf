@@ -8,9 +8,7 @@
  * Return value:
  * None
  */
- 
-#include "script_component.hpp"
 
-private ["_uuid"];
-_uuid = _this select 0;
+#include "script_component.hpp"
+params ["_uuid"];
 ["laser_laserOff", [_uuid]] call EFUNC(common,globalEvent);

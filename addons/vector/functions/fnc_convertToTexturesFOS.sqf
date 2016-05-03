@@ -6,10 +6,8 @@ converts rangefinder distance into array of textures for the vectors scripted in
 
 #include "script_component.hpp"
 
-private ["_number", "_coordinate", "_isNegative"];
-
-_number = _this select 0;
-_coordinate = _this select 1;
+params ["_number", "_coordinate"];
+private ["_isNegative", "_digit0", "_digit1", "_digit2", "_digit3", "_digit4"];
 
 _number = round (_number select _coordinate);
 _isNegative = _number < 0;
@@ -19,7 +17,6 @@ if (_number > 9999) exitWith {
     [QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa))]    // return
 };
 
-private ["_digit0", "_digit1", "_digit2", "_digit3", "_digit4"];
 
 _digit0 = "";
 _digit1 = floor (_number / 1000);

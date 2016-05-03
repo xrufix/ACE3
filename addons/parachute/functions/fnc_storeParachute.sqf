@@ -15,9 +15,8 @@
    * Public: No
    */
 #include "script_component.hpp"
-private ["_unit","_backpack"];
-_unit = _this select 0;
-_backpack = (_this select 1) select 6;
+params ["_unit", "_allGear"];
+private _backpack = _allGear select 6;
 if ((vehicle _unit) isKindOf "ParachuteBase" && backpack _unit == "" && !(_unit getVariable [QGVAR(chuteIsCut),false]) && (_unit getVariable [QGVAR(hasReserve),false])) then {
     _unit addBackpackGlobal (_unit getVariable[QGVAR(backpackClass),"ACE_NonSteerableParachute"]);
 } else {

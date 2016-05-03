@@ -5,10 +5,8 @@ converts rangefinder distance into array of textures for the vectors scripted in
 */
 
 #include "script_component.hpp"
-
-private ["_number", "_isNegative"];
-
-_number = _this select 0;
+params ["_number"];
+private ["_isNegative", "_digit1", "_digit2", "_digit3", "_digit4"];
 
 _number = round _number;
 _isNegative = _number < 0;
@@ -17,8 +15,6 @@ _number = abs _number;
 if (_number >= 10000) exitWith {
     [QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa)), QUOTE(PATHTOF(rsc\vector_minus.paa))]    // return
 };
-
-private ["_digit1", "_digit2", "_digit3", "_digit4"];
 
 _digit1 = floor (_number / 1000);
 _digit2 = floor (_number / 100) - _digit1 * 10;
