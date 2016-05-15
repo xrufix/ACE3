@@ -31,7 +31,8 @@
             width: 100%;
             height: auto;
             background: white;
-            border: 1px $iron;
+            //border: 1px $iron;
+            border: 1px gray;
             border-style: none solid solid solid;
             z-index: 99;
             margin: 0;
@@ -52,7 +53,8 @@
                     line-height: 1.2;
 
                     &:hover {
-                        background-color: $smoke;
+                        //background-color: $smoke;
+                        background-color: gray;
                     }
 
                     &:first-child {
@@ -88,7 +90,6 @@
                 color: #1a0dab;
                 text-decoration: underline;
             }
-
         }
 
         .url {

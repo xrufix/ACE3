@@ -1,4 +1,4 @@
-jQuery(document).foundation();
+//jQuery(document).foundation();
 
 jQuery(document).ready(function(){
     var $slider = jQuery(".slider");

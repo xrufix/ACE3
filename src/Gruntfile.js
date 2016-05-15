@@ -8,9 +8,9 @@ module.exports = function (grunt) {
         "js/vendor/modernizr/modernizr.custom.18747.js",
         "js/vendor/picturefill/picturefill.js",
         "js/vendor/jquery/jquery.min.js",
-        "js/vendor/foundation/foundation.js",
-        "js/vendor/foundation/foundation.topbar.js",
-        "js/vendor/foundation/foundation.clearing.js",
+        //"js/vendor/foundation/foundation.js",
+        //"js/vendor/foundation/foundation.topbar.js",
+        //"js/vendor/foundation/foundation.clearing.js",
         "js/vendor/slick/slick.js",
         "js/vendor/jekyll-toc/jekyll-toc.js",
         "js/core/utils.js",
@@ -25,11 +25,12 @@ module.exports = function (grunt) {
 
         sass: {
             options: {
-                includePaths: ["components/foundation/scss"]
+                includePaths: ["bower_components/foundation-sites/scss"]
             },
             dist: {
                 options: {
-                    outputStyle: "compressed"
+                    //outputStyle: "compressed"
+                    outputStyle: "nested"
                 },
                 files: {
                     "../css/app.css": "scss/app.scss"
@@ -104,6 +105,21 @@ module.exports = function (grunt) {
                     dest: "../img/"                  // Destination path prefix
                 }]
             }
+        },
+        postcss: {
+            autoprefixer: {
+                options: {
+                    processors: [
+                        require("autoprefixer")({browsers: "last 2 versions"})
+                    ]
+                },
+
+                files: [{
+                    src: "../css/app.css",
+                    dest: "../css/app.css",
+                    ext: ".css"
+                }]
+            }
         }
     });
 
@@ -112,7 +128,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-imagemin");
+    grunt.loadNpmTasks("grunt-postcss");
 
-    grunt.registerTask("build", ["sass", "concat", /*"uglify:header",*/ "uglify:footer", "imagemin"]);
+    grunt.registerTask("build", [
+      "sass",
+      "postcss:autoprefixer",
+      "concat",
+      "uglify:footer",
+      "imagemin"]);
     grunt.registerTask("default", ["build", "watch"]);
 };
