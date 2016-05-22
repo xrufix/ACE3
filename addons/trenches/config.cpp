@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {"ACE_envelope_small","ACE_envelope_big"};
         weapons[] = {"ACE_EntrenchingTool"};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"ace_interaction"};
+        requiredAddons[] = {"ace_interaction", "ace_apl"};
         author[] = {"Grey", "esteldunedain"};
         authorUrl = "";
         VERSION_CONFIG;
