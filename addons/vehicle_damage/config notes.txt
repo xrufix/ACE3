@@ -1,0 +1,83 @@
+Different shell types have different effects:
+
+ACE_shellType = "HEAT" || "TANDEM-HEAT" || "HE" || "HESH" || "SABOT" || "SABOT-DU"
+
+- HEAT spawns new ammo upon impact (like RAM), defeated by ERA, creates spall
+  inside if it penetrates
+- TANDEM-HEAT is just like HEAT, but not defeated by ERA
+- HE only affects light armored vehicles (can cause cracks maybe?)
+- HESH spawns new ammo with the velocity of the inverse surface normal (because
+  it splashes onto the surface) and creates spall inside if the new projectile
+  "penetrates", defeated by spall liner
+- SABOT almost always penetrates but creates less spall
+- SABOT-DU is just like SABOT, but has a higher chance to cause fire/cookoff
+
+No ACE config: Check explosive and direct hit value, decide between HEAT, HE
+and SABOT.
+
+---
+
+Just like in ACE2 we're just defining generic areas for ERA:
+Front, Back, Left, Right, Top
+Numbers are the coverage percentages. So 0 means 100% chance of HE pen,
+0.5 50% chance of HE pen etc. With each hit, a part of the ERA gets blown
+off and the pen chance increases (depending on the area).
+
+Example T72B1 (http://www.smallscaleafv.com/inspiration/albums/sergey-golikov/t-72b1/t72-golikov-08.jpg):
+
+ACE_era_hull[] = {0.8, 0, 0.7, 0.7, 0.2};
+ACE_era_turret[] = {1, 0, 0.5, 0.5, 0.5};
+
+No ACE config = no ERA.
+
+---
+
+Spall liner has an effect on the crew damage. Less spall = less dead.
+
+ACE_hasSpallLiner = 1;
+
+---
+
+Spall itself is not created through the frag system. Although that could be
+done, it would probably simply stop within a vehicle (due to low velocity and
+collision) and would cost performance. Instead we simply assign probabilities
+for crew injures.
+When the turret gets hit, the units occupying the turret are pretty much
+guaranteed to be dead. Due to the spall bouncing around within the vehicle, it
+also injures everybody in the hull - just not as much.
+However, we need to know who is where because in APCs for example, the
+commander often sits in the hull, or for special snowflakes like the T-14 where
+driver and gunner sit in the hull.
+
+ACE_unitsInTurret[] = {"GUNNER", "COMMANDER"};
+ACE_unitsInHull[] = {"DRIVER", "CREW"};
+
+The above should be the default configuration for vehicles with no proper ACE
+config.
+
+---
+
+For cookoffs, we need to know where the ammunition sits. Although the
+ammunition that gets loaded is normally taken from the turret, once that is
+used up the crew transfers new ammunition into the turret. We cannot really
+simulate that unless we create a custom system for it - we could, not sure if
+people would like that though.
+Instead we take the easy approach and simply give both hull and turret a
+certain chance of ammo being hit.
+
+ACE_ammoHitChance_turret = 0.5;
+ACE_ammoHitChance_hull = 0.3;
+
+This chance is influenced by available ammo. No ammo = no cookoff.
+
+---
+
+Additionally blowout panels like on the Abrams should influence if the crew
+gets injured by cookoffs, or rather how much.
+
+ACE_hasBlowoutPanels = 1;
+
+---
+
+Active defense systems are another thing that should be taken into
+consideration. I'd prefer to put it into a seperate module though.
