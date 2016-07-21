@@ -9,3 +9,9 @@ class Extended_PreInit_EventHandlers {
         init = QUOTE(call COMPILE_FILE(XEH_preInit));
     };
 };
+
+class Extended_InitPost_EventHandlers {
+    class Tank {
+        init = QUOTE(call FUNC(addEventHandlers));
+    };
+};

@@ -19,7 +19,7 @@
  * Nothing
  */
 #include "script_component.hpp"
-params [
+(_this select 0) params [
     "_vehicle", "_shooter", "_projectile", "_hitPos", "_projectileVelocity",
     "_selections", "_ammoInfo", "_surfaceNormal", "_radius", "_surfaceType",
     "_directHit"
@@ -29,6 +29,17 @@ _ammoInfo params [
     ["_ammoClassname", ""]
 ];
 
+private _nl = toString [13, 10];
+private _msg = "";
+{
+    _msg = _msg + _nl + _x + " = " + str ((_this select 0) select _forEachIndex);
+} forEach [
+    "_vehicle", "_shooter", "_projectile", "_hitPos", "_projectileVelocity",
+    "_selections", "_ammoInfo", "_surfaceNormal", "_radius", "_surfaceType",
+    "_directHit"
+];
+diag_log _msg;
+
 // Let's just ignore explosive damage for now, focus on KE stuff
 // This should still be handled later for satchel charges etc,
 // probably simply ignore low hit values (grenades etc.)
@@ -37,5 +48,5 @@ if (!_directHit) exitWith {};
 // PhysX damage? TODO check this
 if (isNull _projectile || {_ammoClassname == ""}) exitWith {};
 
-[hit value, indirect hit value, indirect hit range, explosive damage, ammo class name]
-OR, if there is no shot object: [impulse value on object collided with,0,0,0]
+// [hit value, indirect hit value, indirect hit range, explosive damage, ammo class name]
+// OR, if there is no shot object: [impulse value on object collided with,0,0,0]

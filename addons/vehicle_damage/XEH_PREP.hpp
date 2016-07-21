@@ -1,1 +1,3 @@
-PREP(empty);
+PREP(addEventHandlers);
+PREP(handleDamage);
+PREP(handleHitPart);
