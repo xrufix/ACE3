@@ -45,7 +45,11 @@ call compile _extensionOutput;
 
     if (_foundIndex < 0) then {
         // Since it is a new injury, we will have to add it to the open wounds array to store it
+        _x set [0, _woundID];
         _openWounds pushBack _x;
+
+        // New injuries will also increase the wound ID
+        _woundID = _woundID + 1;
     } else {
         // We already have one of these, so we are just going to increase the number that we have of it with a new one.
         private _injury = _openWounds select _foundIndex;
