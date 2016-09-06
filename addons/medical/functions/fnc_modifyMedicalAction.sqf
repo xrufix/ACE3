@@ -28,10 +28,26 @@ private _bloodLossOnSelection = 0;
     };
 } forEach (_target getvariable [QGVAR(openWounds), []]);
 
-if (_bloodLossOnSelection >= 0.15) then {
-    _actionData set [2, QPATHTOF(UI\icons\medical_crossRed.paa)];
-} else {
-    if (_bloodLossOnSelection > 0 ) then {
-        _actionData set [2, QPATHTOF(UI\icons\medical_crossYellow.paa)];
+private _hasTourniquet = ((_target getVariable [QGVAR(tourniquets), [0,0,0,0,0,0]]) select _partNumber) > 0;
+
+switch (true) do {
+    case (_bloodLossOnSelection >= 0.15): {
+        if (_hasTourniquet) then {
+            _actionData set [2, QPATHTOF(UI\icons\medical_crossRed_t.paa)];
+        } else {
+            _actionData set [2, QPATHTOF(UI\icons\medical_crossRed.paa)];
+        };
+    };
+    case (_bloodLossOnSelection > 0): {
+        if (_hasTourniquet) then {
+            _actionData set [2, QPATHTOF(UI\icons\medical_crossYellow_t.paa)];
+        } else {
+            _actionData set [2, QPATHTOF(UI\icons\medical_crossYellow.paa)];
+        };
+    };
+    default {
+        if (_hasTourniquet) then {
+            _actionData set [2, QPATHTOF(UI\icons\medical_cross_t.paa)];
+        };
     };
 };
