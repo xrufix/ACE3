@@ -21,6 +21,12 @@ private _duty = 1;
 private _animType = _animName select [1, 3];
 
 GVAR(isSwimming) = false;
+// --- respect maximum slowdown of a given animation defined in config
+GVAR(maxSlowdown) = if (isNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> animationState _unit >> "relSpeedMin")) then {
+    getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> animationState _unit >> "relSpeedMin");
+} else {
+    1
+};
 
 if (_animType in ["idl", "mov"]) then {
     switch (_animName select [5, 3]) do {

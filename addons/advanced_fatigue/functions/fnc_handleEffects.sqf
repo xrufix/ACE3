@@ -61,6 +61,9 @@ if (GVAR(isSwimming)) exitWith {
     _unit setAnimSpeedCoef (1 - _fatigue / 3);
 };
 
+private _animSpeedCoef = (linearConversion [0.3333, 1, _fatigue, 1, 0.75, true]) max GVAR(maxSlowdown);
+_unit setAnimSpeedCoef _animSpeedCoef;
+
 if (_overexhausted) then {
     [_unit, "forceWalk", QUOTE(ADDON), true] call EFUNC(common,statusEffect_set);
 } else {
