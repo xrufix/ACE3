@@ -74,7 +74,7 @@ private _woundID = _unit getVariable [QGVAR(lastUniqueWoundID), 1];
 
 private _painLevel = 0;
 private _critialDamage = false;
-private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), [0,0,0,0,0,0]];
+private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), DEFAULT_BODY_PART_DAMAGE];
 private _woundsCreated = [];
 {
     if (_x select 0 <= _damage) exitWith {
@@ -89,9 +89,9 @@ private _woundsCreated = [];
             _oldInjury params ["_woundClassIDToAdd", "", "_injuryBleedingRate", "_injuryPain"];
 
             private _bodyPartNToAdd = [floor random 6, _bodyPartN] select _isSelectionSpecific; // 6 == count ALL_BODY_PARTS
-            
+
             _bodyPartDamage set [_bodyPartNToAdd, (_bodyPartDamage select _bodyPartNToAdd) + _damage];
-            
+
             // Create a new injury. Format [ID, classID, bodypart, percentage treated, bleeding rate]
             _injury = [_woundID, _woundClassIDToAdd, _bodyPartNToAdd, 1, _injuryBleedingRate];
 

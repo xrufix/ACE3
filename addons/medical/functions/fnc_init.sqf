@@ -19,13 +19,12 @@ if (damage _unit > 0) then {
 };
 
 _unit setVariable [QGVAR(pain), 0, true];
-_unit setVariable [QGVAR(bloodVolume), DEFAULT_BLOOD_VOLUME, true];
 _unit setVariable [QGVAR(isUnconscious), false, true];
 _unit setVariable [QGVAR(partialHealCounter), 0, true];
 
 // tourniquets
 _unit setVariable [QGVAR(tourniquets), [0,0,0,0,0,0], true];
-_unit setVariable [QGVAR(occludedMedications), nil, true]; //Delayed Medications (from tourniquets)
+_unit setVariable [QGVAR(occludedMedications), []], true]; //Delayed Medications (from tourniquets)
 
 // wounds and injuries
 _unit setVariable [QGVAR(openWounds), [], true];
@@ -35,8 +34,9 @@ _unit setVariable [QGVAR(stitchedWounds), [], true];
 // vitals
 _unit setVariable [QGVAR(heartRate), DEFAULT_HEART_RATE, true];
 _unit setVariable [QGVAR(heartRateAdjustments), [], true];
-_unit setVariable [QGVAR(bloodPressure), [80, 120], true];
-_unit setVariable [QGVAR(peripheralResistance), 100, true];
+_unit setVariable [QGVAR(bloodVolume), DEFAULT_BLOOD_VOLUME, true];
+_unit setVariable [QGVAR(bloodPressure), DEFAULT_BLOOD_PRESSURE, true];
+_unit setVariable [QGVAR(peripheralResistance), DEFAULT_PERIPHERAL_RESISTANCE, true];
 _unit setVariable [QGVAR(peripheralResistanceAdjustments), [], true];
 
 // triage card and logs
@@ -44,12 +44,12 @@ _unit setVariable [QGVAR(triageLevel), 0, true];
 _unit setVariable [QGVAR(triageCard), [], true];
 
 // IVs
-_unit setVariable [QGVAR(ivBags), nil, true];
+_unit setVariable [QGVAR(ivBags), [], true];
 
 // damage storage
-_unit setVariable [QGVAR(bodyPartDamage), [0,0,0,0,0,0], true];
+_unit setVariable [QGVAR(bodyPartDamage), DEFAULT_BODY_PART_DAMAGE, true];
 #ifdef DEBUG_TESTRESULTS
-_unit setVariable [QGVAR(bodyPartStatus), [0,0,0,0,0,0], true];
+_unit setVariable [QGVAR(bodyPartStatus), DEFAULT_BODY_PART_STATUS, true];
 #endif
 
 // generic medical admin

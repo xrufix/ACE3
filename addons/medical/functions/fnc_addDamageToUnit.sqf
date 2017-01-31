@@ -44,10 +44,10 @@ private _currentDamage = _unit getHitIndex _hitpointIndex;
 #ifdef DEBUG_TESTRESULTS
 private _checkAtFrame = diag_frameno + 5;
 private _partNumber = ALL_BODY_PARTS find _bodyPart;
-private _startDmg = (_unit getVariable [QGVAR(bodyPartStatus), [0,0,0,0,0,0]]) select _partNumber;
+private _startDmg = (_unit getVariable [QGVAR(bodyPartStatus), DEFAULT_BODY_PART_STATUS]) select _partNumber;
 private _debugCode = {
     params ["", "_unit", "_startDmg", "_damageToAdd", "_partNumber"];
-    private _endDmg = (_unit getVariable [QGVAR(bodyPartStatus), [0,0,0,0,0,0]]) select _partNumber;
+    private _endDmg = (_unit getVariable [QGVAR(bodyPartStatus), DEFAULT_BODY_PART_STATUS]) select _partNumber;
     if ((!alive _unit) || {_endDmg > _startDmg}) then {
         INFO_6("addDamageToUnit - PASSED - [unit:%1, partNo:%2, addDmg:%3] results:[alive:%4 old:%5 new:%6]", _unit, _partNumber, _damageToAdd, alive _unit, _startDmg, _endDmg);
     } else {

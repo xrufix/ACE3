@@ -19,7 +19,7 @@ params ["_caller", "_target", "_bodyPart"];
 private _heartRate = 0;
 
 if (alive _target && !([_target, _bodyPart] call EFUNC(medical,hasTourniquetAppliedTo))) then {
-    _heartRate = _target getVariable [QEGVAR(medical,heartRate), 80];
+    _heartRate = _target getVariable [QEGVAR(medical,heartRate), DEFAULT_HEART_RATE];
 };
 
 private _heartRateOutput = ELSTRING(medical,Check_Pulse_Output_5);

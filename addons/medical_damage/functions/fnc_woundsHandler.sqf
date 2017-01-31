@@ -41,7 +41,7 @@ call compile _extensionOutput;
 // todo: Make the pain and bleeding calculations part of the extension again
 private _painLevel = 0;
 private _critialDamage = false;
-private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), [0,0,0,0,0,0]];
+private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), DEFAULT_BODY_PART_DAMAGE];
 {
     _x params ["", "_woundClassIDToAdd", "_bodyPartNToAdd", "", "_bleeding"];
 
@@ -53,7 +53,7 @@ private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), [0,
     private _painfullness = 0.05 + 0.95 * MATH_E ^ (-(random 30) / _nastinessLikelihood);
 
     _bleeding = _bleeding * _bloodiness;
-    
+
      // wound category (minor, medium, large)
     private _category = floor ((0 max _bleeding min 0.1) / 0.05);
 

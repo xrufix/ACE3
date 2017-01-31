@@ -43,7 +43,7 @@ switch (toLower _bodyPart) do {
     };
 };
 
-private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), [0,0,0,0,0,0]];
+private _bodyPartDamage = _unit getVariable [QEGVAR(medical,bodyPartDamage), DEFAULT_BODY_PART_DAMAGE];
 private _damageOnAffectedBodyParts = 0;
 {
     private _partIndex = ALL_BODY_PARTS find toLower _x;

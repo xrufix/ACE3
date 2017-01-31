@@ -73,18 +73,18 @@ if (isClass (_medicationConfig >> _className)) then {
 };
 
 if (alive _target) then {
-    private _heartRate = _target getVariable [QEGVAR(medical,heartRate), 80];
+    private _heartRate = _target getVariable [QEGVAR(medical,heartRate), DEFAULT_HEART_RATE];
     private _hrIncrease = [_hrIncreaseLow, _hrIncreaseNorm, _hrIncreaseHigh] select (floor ((0 max _heartRate min 110) / 55));
     _hrIncrease params ["_minIncrease", "_maxIncrease"];
     _heartRateChange = _minIncrease + random (_maxIncrease - _minIncrease);
-    
+
     // Adjust the heart rate based upon config entry
     if (_heartRateChange != 0) then {
         private _heartRateAdjustments = _target getVariable [QEGVAR(medical,heartRateAdjustments), []];
         _heartRateAdjustments pushBack [_heartRateChange, _timeTillMaxEffect, _timeInSystem, 0];
         _target setVariable [QEGVAR(medical,heartRateAdjustments), _heartRateAdjustments];
     };
-    
+
     // Adjust the pain suppression based upon config entry
     if (_painReduce > 0) then {
         private _painSupressAdjustments = _target getVariable [QEGVAR(medical,painSupressAdjustments), []];

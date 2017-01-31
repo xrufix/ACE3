@@ -21,6 +21,6 @@ private _totalDamage = 0;
 
 {
     _totalDamage = _totalDamage + _x;
-} forEach (_unit getVariable [QEGVAR(medical,bodyPartDamage), []]);
+} forEach (_unit getVariable [QEGVAR(medical,bodyPartDamage), DEFAULT_BODY_PART_DAMAGE]);
 
 10 max (_totalDamage * 5) min 180

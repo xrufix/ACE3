@@ -67,7 +67,7 @@ if (_totalIvVolume >= 1) then {
 
 private _selectionTourniquet = _target getVariable [QEGVAR(medical,tourniquets), [0,0,0,0,0,0]];
 private _selectionBloodLoss = [0, 0, 0, 0, 0, 0];
-private _selectionDamage = _target getVariable [QEGVAR(medical,bodyPartDamage), [0,0,0,0,0,0]];
+private _selectionDamage = _target getVariable [QEGVAR(medical,bodyPartDamage), DEFAULT_BODY_PART_DAMAGE];
 private _allInjuryTexts = [];
 
 {

@@ -15,7 +15,7 @@
 params ["_unit"];
 
 private _painLevel = [_unit] call FUNC(getPainLevel);
-private _bodyPartDamage = _unit getVariable [QGVAR(bodyPartDamage), [0,0,0,0,0,0]];
+private _bodyPartDamage = _unit getVariable [QGVAR(bodyPartDamage), DEFAULT_BODY_PART_DAMAGE];
 
 _bodyPartDamage params ["_headDamage", "_bodyDamage", "_leftArmDamage", "_rightArmDamage", "_leftLegDamage", "_rightLegDamage"];
 
