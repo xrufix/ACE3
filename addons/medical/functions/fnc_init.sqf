@@ -24,7 +24,7 @@ _unit setVariable [QGVAR(partialHealCounter), 0, true];
 
 // tourniquets
 _unit setVariable [QGVAR(tourniquets), [0,0,0,0,0,0], true];
-_unit setVariable [QGVAR(occludedMedications), []], true]; //Delayed Medications (from tourniquets)
+_unit setVariable [QGVAR(occludedMedications), [], true]; //Delayed Medications (from tourniquets)
 
 // wounds and injuries
 _unit setVariable [QGVAR(openWounds), [], true];
