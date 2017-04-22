@@ -16,14 +16,14 @@
 #define HIT_STRUCTURAL QGVAR($#structural)
 #define HIT_CRASH QGVAR($#crash)
 
-params ["_unit", "_selection", "_damage", "_shooter", "_ammo", "_hitPointIndex", "_instigator"];
-//diag_log text str _this;
+params ["_unit", "_selection", "_damage", "_shooter", "_ammo", "_hitPointIndex", "_instigator", "_hitPoint"];
+diag_log text str _this;
 
 // HD sometimes triggers for remote units - ignore.
 if (!local _unit) exitWith {nil};
 
 // Get missing meta info
-private ["_hitPoint", "_oldDamage"];
+private ["_oldDamage"];
 private _isCrash = false;
 
 // Store
@@ -39,7 +39,7 @@ if (_hitPointIndex < 0) then {
         _unit setVariable [HIT_CRASH, _damage];
     };
 } else {
-    _hitPoint = toLower (getAllHitPointsDamage _unit select 0 select _hitPointIndex);
+    _hitPoint = toLower _hitPoint;
     _oldDamage = _unit getHitIndex _hitPointIndex;
 
     // No crash, reset
@@ -75,8 +75,20 @@ if (_hitPoint isEqualTo "ace_hdbracket") exitWith {
     // --- Arms and Legs
     private _damageLeftArm = _unit getVariable [QGVAR($HitLeftArm), 0];
     private _damageRightArm = _unit getVariable [QGVAR($HitRightArm), 0];
+    private _vanillaArm = _unit getVariable [QGVAR($HitArms), 0];
+    if (_damageLeftArm > _damageRightArm) then {
+        _damageLeftArm = _damageLeftArm max _vanillaArm;
+    } else {
+        _damageRightArm = _damageRightArm max _vanillaArm;
+    };
     private _damageLeftLeg = _unit getVariable [QGVAR($HitLeftLeg), 0];
     private _damageRightLeg = _unit getVariable [QGVAR($HitRightLeg), 0];
+    private _vanillaLeg = _unit getVariable [QGVAR($HitLegs), 0];
+    if (_damageLeftLeg > _damageRightLeg) then {
+        _damageLeftLeg = _damageLeftLeg max _vanillaLeg;
+    } else {
+        _damageRightLeg = _damageRightLeg max _vanillaLeg;
+    };
 
     // Find hit point that received the maxium damage.
     // second param is a priority. should multiple hitpoints receive the same
