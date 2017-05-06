@@ -1,10 +1,11 @@
 
 class CfgWeapons {
+    class InventoryFirstAidKitItem_Base_F;
+    class ACE_ItemInfo: InventoryFirstAidKitItem_Base_F {}; // type = 401;
     class ItemCore;
     class ACE_ItemCore: ItemCore {
-        type = 4096;//4;
-        detectRange = -1;
-        simulation = "ItemMineDetector";
+        // type = 131072;
+        class ItemInfo: ACE_ItemInfo {};
     };
 
     class Rifle;
@@ -28,7 +29,6 @@ class CfgWeapons {
         };
     };
 
-    class InventoryItem_Base_F;
     class ACE_Banana: ACE_ItemCore {
         author = CSTRING(ACETeam);
         scope = 2;
@@ -38,7 +38,7 @@ class CfgWeapons {
         picture = QPATHTOF(data\icon_banana_ca.paa);
         icon = "iconObject_circle";
         mapSize = 0.034;
-        class ItemInfo: InventoryItem_Base_F {
+        class ItemInfo: ACE_ItemInfo {
             mass = 1;
         };
     };
