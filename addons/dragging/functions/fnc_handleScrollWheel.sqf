@@ -37,8 +37,11 @@ _position set [2, ((_position select 2) + _scrollAmount min (_maxHeight + 1.5)) 
 
 // move up/down object and reattach at current position
 detach _carriedItem;
-_carriedItem setPosATL _position;
-_carriedItem attachTo [_unit];
+
+private _positionChange =  _position vectorDiff (getPosATL _carriedItem);
+private _selectionPosition = _unit worldToModel (ASLtoAGL getPosWorld _carriedItem);
+_selectionPosition = _selectionPosition vectorAdd _positionChange;
+_carriedItem attachTo [_unit, _selectionPosition];
 
 //reset the carry direction
 private _direction = _carriedItem getVariable [QGVAR(carryDirection), 0];
